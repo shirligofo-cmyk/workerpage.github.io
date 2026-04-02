@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>工人登录验证</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei}
+body{background:#f4f4f4;display:flex;justify-content:center;align-items:center;height:100vh}
+.login-box{background:#fff;width:380px;padding:40px;border-radius:12px;box-shadow:0 2px 15px rgba(0,0,0,0.1)}
+.login-box h2{text-align:center;margin-bottom:24px}
+.input-item{margin-bottom:16px}
+.input-item label{display:block;margin-bottom:6px}
+.input-item input{width:100%;padding:12px;border:1px solid #ddd;border-radius:6px}
+.btn-login{width:100%;padding:12px;background:#2385bb;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer}
+#msg{text-align:center;margin-bottom:10px;height:20px}
+.success{color:#090}
+.error{color:red}
+</style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>工人登录</h2>
+  <div id="msg"></div>
+  <div class="input-item">
+    <label>工人编号</label>
+    <input type="text" id="worker_id" placeholder="输入编号">
+  </div>
+  <div class="input-item">
+    <label>密码</label>
+    <input type="password" id="password" placeholder="输入密码">
+  </div>
+  <button class="btn-login" onclick="check()">登录</button>
+</div>
+
+<script>
+function check() {
+  const wid = document.getElementById('worker_id').value.trim()
+  const pwd = document.getElementById('password').value.trim()
+  const msg = document.getElementById('msg')
+
+  // 这里是必须匹配的正确账号密码
+  const correctId = "1311"
+  const correctPwd = "123456"
+
+  if (wid === correctId && pwd === correctPwd) {
+    msg.className = "success"
+    msg.innerText = "✅ 验证正确，允许进入"
+  } else {
+    msg.className = "error"
+    msg.innerText = "❌ 信息不匹配，禁止进入"
+  }
+}
+</script>
+
+</body>
+</html>
